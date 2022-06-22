@@ -83,7 +83,21 @@ class App extends Component {
   
   addCredit = (e) => {
 	e.preventDefault();
-	console.log("shama");	
+	let data = {};
+	
+	let currDateId = new Date(Date.now());
+	data["id"] = `${currDateId}`; // react requires unique id for each element in rendered list, so date string is being used as id 
+	data["description"] = e.target.description.value;
+	data["amount"] = Number(e.target.amount.value);  // initial given amount from the form is a string datatype
+	data["date"] = this.getCleanedCurrDate();
+	
+	
+	// clear form data 
+	e.target.description.value = "";
+	e.target.amount.value = "";
+	
+	
+	this.setState({credits: [...this.state.credits, data]},()=>{this.calculateAccountBalance()});
   }
   addDebit = (e) => {
 	e.preventDefault();
@@ -100,7 +114,6 @@ class App extends Component {
 	e.target.description.value = "";
 	e.target.amount.value = "";
 	
-	console.log(data);
 	
 	this.setState({debits: [...this.state.debits, data]},()=>{this.calculateAccountBalance()});
   }
@@ -112,7 +125,7 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
-	const CreditsComponent = () => (<Credits credits={this.state.credits}/>)
+	const CreditsComponent = () => (<Credits addCredit={this.addCredit} credits={this.state.credits}/>)
 	const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits}/>)
     return (
       <Router>

@@ -30,8 +30,6 @@ class App extends Component {
 		let creditsData = await axios.get(creditsUrl);
 		let debitsData = await axios.get(debitsUrl);
 		
-		console.log("all credits", creditsData);
-		console.log("all debits", debitsData);
 		this.setState({credits:creditsData.data,debits:debitsData.data}, ()=>{this.calculateAccountBalance();});
 		
 	}
@@ -62,7 +60,8 @@ class App extends Component {
 	let accountBalance = totalCredits-totalDebits;
 	accountBalance = accountBalance.toFixed(2);
 	this.setState({accountBalance: accountBalance});
-	  
+	
+	console.log("recalc curr balance",accountBalance);
   }
 
   
@@ -72,12 +71,40 @@ class App extends Component {
     newUser.userName = logInInfo.userName
     this.setState({currentUser: newUser})
   }
-  addCredit = () => {
-	
-  }
-  addDebit = () => {
+  
+  
+  getCleanedCurrDate = () => {
 	
 	  
+  }
+  
+  addCredit = (e) => {
+	e.preventDefault();
+	console.log("shama");	
+  }
+  addDebit = (e) => {
+	e.preventDefault();
+	let data = {};
+	
+	let currDate = new Date(Date.now());
+	
+	data["id"] = `${currDate}`; // react requires unique id for each element in rendered list, so date string is being used as id 
+	
+	currDate = currDate.toLocaleString().split(',')[0].split("/"); // converting data into expected format for Debits component
+	currDate = `${currDate[2]}-${currDate[0]}-${currDate[1]}`;
+	
+	data["description"] = e.target.description.value;
+	data["amount"] = Number(e.target.amount.value);  // initial given amount from the form is a string datatype
+	data["date"] = currDate;
+	
+	
+	// clear form data 
+	e.target.description.value = "";
+	e.target.amount.value = "";
+	
+	console.log(data);
+	
+	this.setState({debits: [...this.state.debits, data]},()=>{this.calculateAccountBalance()});
   }
 	
   // Create Routes and React elements to be rendered using React components
@@ -88,7 +115,7 @@ class App extends Component {
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
 	const CreditsComponent = () => (<Credits credits={this.state.credits}/>)
-	const DebitsComponent = () => (<Debits debits={this.state.debits}/>)
+	const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits}/>)
     return (
       <Router>
         <div>

@@ -74,8 +74,11 @@ class App extends Component {
   
   
   getCleanedCurrDate = () => {
+	let currDate = new Date(Date.now());
+	currDate = currDate.toLocaleString().split(',')[0].split("/"); // converting data into expected format for Debits component
+	currDate = `${currDate[2]}-${currDate[0]}-${currDate[1]}`;
 	
-	  
+	return currDate;
   }
   
   addCredit = (e) => {
@@ -86,16 +89,11 @@ class App extends Component {
 	e.preventDefault();
 	let data = {};
 	
-	let currDate = new Date(Date.now());
-	
-	data["id"] = `${currDate}`; // react requires unique id for each element in rendered list, so date string is being used as id 
-	
-	currDate = currDate.toLocaleString().split(',')[0].split("/"); // converting data into expected format for Debits component
-	currDate = `${currDate[2]}-${currDate[0]}-${currDate[1]}`;
-	
+	let currDateId = new Date(Date.now());
+	data["id"] = `${currDateId}`; // react requires unique id for each element in rendered list, so date string is being used as id 
 	data["description"] = e.target.description.value;
 	data["amount"] = Number(e.target.amount.value);  // initial given amount from the form is a string datatype
-	data["date"] = currDate;
+	data["date"] = this.getCleanedCurrDate();
 	
 	
 	// clear form data 

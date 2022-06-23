@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/assignment4_bank-of-react/static/css/main.8287159a.chunk.css",
+    "main.js": "/assignment4_bank-of-react/static/js/main.61489863.chunk.js",
+    "main.js.map": "/assignment4_bank-of-react/static/js/main.61489863.chunk.js.map",
+    "runtime-main.js": "/assignment4_bank-of-react/static/js/runtime-main.4085753d.js",
+    "runtime-main.js.map": "/assignment4_bank-of-react/static/js/runtime-main.4085753d.js.map",
+    "static/js/2.48e9b4ec.chunk.js": "/assignment4_bank-of-react/static/js/2.48e9b4ec.chunk.js",
+    "static/js/2.48e9b4ec.chunk.js.map": "/assignment4_bank-of-react/static/js/2.48e9b4ec.chunk.js.map",
+    "static/js/3.e9b55be1.chunk.js": "/assignment4_bank-of-react/static/js/3.e9b55be1.chunk.js",
+    "static/js/3.e9b55be1.chunk.js.map": "/assignment4_bank-of-react/static/js/3.e9b55be1.chunk.js.map",
+    "index.html": "/assignment4_bank-of-react/index.html",
+    "static/css/main.8287159a.chunk.css.map": "/assignment4_bank-of-react/static/css/main.8287159a.chunk.css.map",
+    "static/js/2.48e9b4ec.chunk.js.LICENSE.txt": "/assignment4_bank-of-react/static/js/2.48e9b4ec.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4085753d.js",
+    "static/js/2.48e9b4ec.chunk.js",
+    "static/css/main.8287159a.chunk.css",
+    "static/js/main.61489863.chunk.js"
+  ]
+}

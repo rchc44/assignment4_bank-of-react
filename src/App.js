@@ -128,7 +128,7 @@ class App extends Component {
 	const CreditsComponent = () => (<Credits addCredit={this.addCredit} credits={this.state.credits}/>)
 	const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits}/>)
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>

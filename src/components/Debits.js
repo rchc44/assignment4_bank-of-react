@@ -1,6 +1,7 @@
 // src/components/Debits.js
 
 const Debits = (props) => {
+	console.log(props);
 	let debitsView = () => {
     const { debits } = props;
     return debits.map((debit) => {
@@ -13,8 +14,8 @@ const Debits = (props) => {
       <h1>Debits</h1>
       {debitsView()}
       <form onSubmit={props.addDebit}>
-        <input type="text" name="description" />
-        <input type="number" name="amount" />
+        Description: <input type="text" name="description" />
+        Amount: <input type="number" name="amount" />
         <button type="submit">Add Debit</button>
       </form>
     </div>

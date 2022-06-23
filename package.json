@@ -1,8 +1,8 @@
 {
   "name": "bank-of-react",
   "version": "0.1.0",
-  "homepage": "https://rchc44.github.io/assignment4_bank-of-react",
-  "private": true,
+  "homepage": "https://rchc44.github.io/assignment4_bank-of-react/",
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",

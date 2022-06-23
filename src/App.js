@@ -120,6 +120,7 @@ class App extends Component {
 	
   // Create Routes and React elements to be rendered using React components
   render() {  
+	const basePath = "/assignment4_bank-of-react/"
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
     const UserProfileComponent = () => (
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
@@ -128,13 +129,13 @@ class App extends Component {
 	const CreditsComponent = () => (<Credits addCredit={this.addCredit} credits={this.state.credits}/>)
 	const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits}/>)
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router >
         <div>
-          <Route exact path="/" render={HomeComponent}/>
-          <Route exact path="/userProfile" render={UserProfileComponent}/>
-          <Route exact path="/login" render={LogInComponent}/>
-		  <Route exact path="/credits" render={CreditsComponent} />
-		  <Route exact path="/debits" render={DebitsComponent} />
+          <Route exact path={basePath} render={HomeComponent}/>
+          <Route exact path={basePath+"userProfile"} render={UserProfileComponent}/>
+          <Route exact path={basePath+"login"} render={LogInComponent}/>
+		  <Route exact path={basePath+"credits"} render={CreditsComponent} />
+		  <Route exact path={basePath+"debits"} render={DebitsComponent} />
         </div>
       </Router>
     );

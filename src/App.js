@@ -7,6 +7,8 @@ import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import Credits from "./components/Credits";
 import Debits from "./components/Debits";
+import NavBar from "./components/NavBar";
+
 import axios from "axios";
 
 class App extends Component {
@@ -129,6 +131,7 @@ class App extends Component {
 	const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits}/>)
     return (
       <Router basename={process.env.PUBLIC_URL}>
+		<NavBar />
         <div>
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>

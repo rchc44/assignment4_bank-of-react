@@ -7,6 +7,8 @@ import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import Credits from "./components/Credits";
 import Debits from "./components/Debits";
+import NavBar from "./components/NavBar";
+
 import axios from "axios";
 
 class App extends Component {
@@ -125,10 +127,11 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
-	const CreditsComponent = () => (<Credits addCredit={this.addCredit} credits={this.state.credits}/>)
-	const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits}/>)
+	const CreditsComponent = () => (<Credits addCredit={this.addCredit} credits={this.state.credits} accountBalance={this.state.accountBalance}/>)
+	const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits} accountBalance={this.state.accountBalance}/>)
     return (
       <Router basename={process.env.PUBLIC_URL}>
+		<NavBar />
         <div>
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
